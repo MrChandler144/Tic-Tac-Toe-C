@@ -4,9 +4,9 @@
  / //\/ /_/ /___   / / /  _  \/ /___   / / / \_///__  
  \/ \____/\____/   \/  \_/ \_/\____/   \/  \___/\__/  
                                                       
-This is a program that allows you to play tic tac toe.
-There are plans to publish a version where you play against the AI in future.
+This is a set of programs that allows you to play tic tac toe. It contains a two-player version, and a version where you play against a computer that makes random plays.
+There are plans to upgrade the AI in future.
 
-There are the classic nine squares to choose, and also secret option 10.
+There are the classic nine squares to choose, and also a secret option 10 in the two-player version.
 
-Developed from November 15 to November 16 2022. A version where you play against the computer was developed until November 23 2022 before being dropped for other projects.
+Developed from November 15 to November 23 2022, and finished in July 4 and July 5 2023.

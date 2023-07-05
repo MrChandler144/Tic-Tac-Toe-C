@@ -14,18 +14,6 @@
 	7|8|9
 	*/
 
-void printGrid(char *values)
-{
-	// surely we get fed in the char array as it should be printed
-	// and we just print it
-	// and of course a char array can be just a regular string but with newline charcters
-	// so uhhh
-	
-	printf("\n%s\n", values);
-	
-	// and that's it
-}
-
 int checkWin(char *values, int player)
 {
 	// condense the 5x5 into a 3x3
@@ -105,8 +93,14 @@ int checkWin(char *values, int player)
 		return player%2;
 	}
 	
-	// and check square ten lol
-	if ((smolgrid[2][1]==ref) && (smolgrid[2][2]==smolgrid[2][1]) && (values[30]==smolgrid[2][2]))
+	// and check square ten
+	// 8 9 10
+	if ((smolgrid[2][1]==ref) && (smolgrid[2][2]==ref) && (values[30]==ref))
+	{
+		return player%2;
+	}
+	// 2 6 10
+	if ((smolgrid[0][1]==ref) && (smolgrid[1][2]==ref) && (values[30]==ref))
 	{
 		return player%2;
 	}
@@ -129,12 +123,13 @@ int main(void)
 	int numTurns = 0;
 	int validq = 0;
 	int player = 1;
+	int wasTenPlayed=0;
 	int gameState;
 	
-	while (numTurns < 9)
+	while (numTurns < 20)	// when a win/draw condition is hit we artificially increase numTurns over this limit
 	{
 		// display the move
-		printGrid(values);
+		printf("\n%s\n", values);
 		
 		// take in the move and process it
 		while (validq!=1)
@@ -170,6 +165,7 @@ int main(void)
 			// is it ten
 			if ((move[0]=='1') && (move[1]=='0') && (move[2]=='\0'))
 			{
+				wasTenPlayed=1;
 				iref=30;
 				values[29]='|';
 				if (values[30]==' ')
@@ -203,7 +199,7 @@ int main(void)
 		{
 			// player 2 win
 			numTurns=102;
-		} else if (numTurns==8)
+		} else if (numTurns==8+wasTenPlayed)
 		{	
 			// draw
 			numTurns=103;
@@ -223,7 +219,7 @@ int main(void)
 	// act accordingly
 	
 	// print the board
-	printGrid(values);
+	printf("\n%s\n", values);
 	if (numTurns==101)
 	{
 		printf("player 1 won nice work bro");
